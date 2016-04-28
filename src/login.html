@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="event-Planner">
+<html ng-app="eventPlanner">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,8 @@
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="vendors/angular.min.js">
-    <link rel="stylesheet" type="text/css" href="js/app.js">
+	<script src="vendors/angular.min.js"></script>
+	<script src="js/app.js"></script>
 	<title>Event-Planner-Login</title>
 </head>
 <body>
@@ -20,15 +20,15 @@
 	<div class="form-container">
 		<div class="container">
 			<h3>Create an Account</h3>
-			<form autocomplete="on">
+			<form autocomplete="on" ng-controller="LoginController as login">
 				<label for="name">Full Name:</label>
 				<input type="text" id="name" name="name" placeholder="Full Name" required></input>
 				<label for="email">Email:</label>
 				<input type="email" id="email" name="email" placeholder="Email" required></input>
 				<label for="password">Please choose a password:</label>
-				<input type="password" id="email" placeholder="Password" required></input>
-				<p class="restrictions-1">Use at least 8 characters</p>
-				<p class="restrictions-2">Use at least one special character</p>
+				<input type="password" id="email" placeholder="Password" ng-model="login.password" ng-keyup="login.verifyChar(); login.verifyLen()" required></input>
+				<p class="restrictions-1" ng-class="{correct:login.verifiedLen}" >Use at least 8 characters</p>
+				<p class="restrictions-2" ng-class="{correct:login.verifiedChar}" >Use at least one special character</p>
 				<button type="submit">submit</button>
 			</form>
 		</div>
