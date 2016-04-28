@@ -108,7 +108,7 @@ ul {
 }
 
 li {
-	height: 80px;
+	min-height: 80px;
 }
 
 .date {
@@ -143,12 +143,16 @@ h4 {
 	font-size: 1em;
 }
 
-.event-type {
+.label {
+	color: #FC9704;
+}
+
+.host, .event-type {
 	color: #585858;
 	font-size: 0.8em;
 }
 
-.message {
+.message, .guests, .location {
 	font-size: 0.7em;
 }
 

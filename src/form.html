@@ -25,12 +25,14 @@
                 <h3>Your Events</h3>
                 <ul class="events" ng-repeat="event in display.events">
                     <li class="event">
-                        <div class="date">06 June
-                            <time>5 pm</time>
+                        <div class="date">{{event.startDate}}
+                            <time>{{event.startDate}}</time>
                         </div><div class="event-info">
                             <h4>{{event.name}}</h4>
-                            <p class="event-type">{{event.type}}</p>
-                            <p class="message">{{event.message}}</p>
+                            <p class="event-type">{{event.type}}<span class="host">{{' hosted by ' + event.host}}</span></p>
+                            <p class="location"><span class="label">location: </span>{{event.location}}</p>
+                            <p class="guests"><span class="label">guests: </span>{{event.guests}}</p>
+                            <p class="message"><span class="label">{{event.host + ' says: '}}</span>{{event.message}}</p>
                         </div>
                     </li>
                 </ul>
