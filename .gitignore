@@ -1,2 +1,4 @@
 colors
 todo
+node_modules
+src/vendors/angular.min.js

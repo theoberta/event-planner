@@ -1,58 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="eventPlanner">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/login.css">
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
-	<title>Event-Planner-Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
+    <script src="vendors/angular.min.js"></script>
+    <script src="js/app.js"></script>
+
+    <title>Event-Planner-Form</title>
 </head>
+
 <body>
-	<header>
-		<div class="container">
-			<h1>event planner</h1>
-		</div>
-	</header>
-	<div class="form-container">
-		<div class="container">
-			<h3>create a new event</h3>
-			<form autocomplete="on">
-				<label for="name">Name:</label>
-				<input type="text" id="name" placeholder="Name of event" required></input>
+    <header>
+        <div class="container">
+            <h1>event planner</h1>
+        </div>
+    </header>
+    <div class="form-container">
+        <div class="container">
+            <div class="eventlist" ng-controller="DisplayController as display">
+                <h3>Your Events</h3>
+                <ul class="events" ng-repeat="event in display.events">
+                    <li class="event">
+                        <div class="date">06 June
+                            <time>5 pm</time>
+                        </div><div class="event-info">
+                            <h4>{{event.name}}</h4>
+                            <p class="event-type">{{event.type}}</p>
+                            <p class="message">{{event.message}}</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="create-event" ng-controller="CreateController as create">
+	            <button ng-click="create.setVisible()">create new event</button>
+	            <div ng-show="create.visibility">
+	                <h3>create a new event</h3>
+	                <form autocomplete="on">
+	                    <label for="name">Name:</label>
+	                    <input type="text" id="name" placeholder="Name of event" required></input>
 
-				<label for="type">type:</label>
-				<input type="text" list="type" placeholder="type of event" required></input>
-				<datalist id="type">
-    				<option value="Meeting">
-    				<option value="Concert">
-    				<option value="Party">
-    				<option value="Dinner">
-    				<option value="Work Out">
-  				</datalist>
+	                    <label for="type">type:</label>
+	                    <input type="text" list="type" placeholder="type of event" required></input>
+	                    <datalist id="type">
+	    				<option value="Meeting">
+	    				<option value="Concert">
+	    				<option value="Party">
+	    				<option value="Dinner">
+	    				<option value="Work Out">
+	  					</datalist>
 
-				<label for="host">host:</label>
-				<input type="text" id="host" name="name" placeholder="Host" required></input>
+	                    <label for="host">host:</label>
+	                    <input type="text" id="host" name="name" placeholder="Host" required></input>
 
-				<label for="start-date">start date:</label>
-				<input type="datetime-local" id="start-date" placeholder="start date" required></input>
+	                    <label for="start-date">start date:</label>
+	                    <input type="datetime-local" id="start-date" placeholder="start date" required></input>
 
-				<label for="end-date">end date:</label>
-				<input type="datetime-local" id="end-date" placeholder="end date" required></input>
+	                    <label for="end-date">end date:</label>
+	                    <input type="datetime-local" id="end-date" placeholder="end date" required></input>
 
-				<label for="guests">guests:</label>
-				<input type="text" id="guests" name="guests" placeholder="guests" required></input>
+	                    <label for="guests">guests:</label>
+	                    <input type="text" id="guests" name="guests" placeholder="guests" required></input>
 
-				<label for="location">start date:</label>
-				<input type="text" id="location" placeholder="location" required></input>
+	                    <label for="location">start date:</label>
+	                    <input type="text" id="location" placeholder="location" required></input>
 
-				<label for="message">start date:</label>
-				<textarea type="text" id="message" placeholder="leave a message"></textarea>
+	                    <label for="message">start date:</label>
+	                    <textarea type="text" id="message" placeholder="leave a message"></textarea>
 
 
-				<button type="submit">submit</button>
-			</form>
-		</div>
-	</div>
+	                    <button type="submit">submit</button>
+	                </form>
+	            </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
