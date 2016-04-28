@@ -1,16 +1,24 @@
 (function(){
 var app = angular.module('eventPlanner', []);
 
-app.controller('DisplayController', function() {
+app.controller('DisplayEventsController', function() {
 	this.events = events;
 });
 
-app.controller('CreateController', function() {
+app.controller('DisplayCreateController', function() {
 	this.visibility = false;
 	this.setVisible = function() {
 		this.visibility = true;
 	}
-})
+});
+
+app.controller('SubmitController', function(){
+	this.event = {};
+	this.addEvent = function() {
+		events.push(this.event);
+		this.event = {};
+	}
+});
 
 var events = [
 	{
