@@ -29,7 +29,7 @@ h1 {
 	padding: 20px 0 25px 0;
 }
 
-/*//////////////////////////////////////FORM DIV/////////////////////////////////////////////*/
+/*//////////////////////////////////////LOGIN FORM DIV/////////////////////////////////////////////*/
 
 .form-container{
 	background-color: #C8C9D4;
@@ -115,17 +115,21 @@ li {
 	display: inline-block;
 	background-color: #FC9704;
 	color: white;
-	padding: 10px;
+	padding: 5px 10px;
 	width: 20%;
 	height: 100%;
 	box-sizing: border-box;
 	vertical-align: top;
 }
 
+.month-day {
+	font-size: 1.5em;
+}
+
 .event-info {
 	display: inline-block;
 	background-color: white;
-	padding: 10px;
+	padding: 5px 10px;
 	width: 80%;
 	height: 100%;
 	box-sizing: border-box;
@@ -143,17 +147,31 @@ h4 {
 	font-size: 1em;
 }
 
+.host {
+	color: #585858;
+	font-size: 1em;
+}
+
+.event-type {
+	color: #585858;
+	font-size: 0.7em;
+}
+
+.devider {
+background-color: #eeeeee;
+background: linear-gradient(to right, #dddddd , white);
+height: 1px;
+width: 100%;
+margin: 5px 0;
+}
+
 .label {
 	color: #FC9704;
 }
 
-.host, .event-type {
-	color: #585858;
-	font-size: 0.8em;
-}
-
 .message, .guests, .location {
 	font-size: 0.7em;
+	color: #585858;
 }
 
 li p {
