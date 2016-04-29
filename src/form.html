@@ -25,11 +25,14 @@
                 <h3>Your Events</h3>
                 <ul class="events" ng-repeat="event in display.events track by $index">
                     <li class="event">
-                        <div class="date">{{event.startDate}}
-                            <time>{{event.startDate}}</time>
+                        <div class="date">
+                            <time><div class="month-day">{{event.startMonth + ' '}} {{event.startDay}}</div>{{event.startYear + " - "}}{{event.startTime}}</time><br>
+
+                            <time><div class="month-day">{{event.endMonth + " "}}{{event.endDay}}</div>{{event.endYear + " - "}}{{event.endTime}}</time>
                         </div><div class="event-info">
                             <h4>{{event.name}}</h4>
                             <p class="event-type">{{event.type}}<span class="host">{{' hosted by ' + event.host}}</span></p>
+                            <div class="devider"></div>
                             <p class="location"><span class="label">location: </span>{{event.location}}</p>
                             <p class="guests"><span class="label">guests: </span>{{event.guests}}</p>
                             <p class="message"><span class="label">{{event.host + ' says: '}}</span>{{event.message}}</p>

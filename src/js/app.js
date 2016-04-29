@@ -39,7 +39,20 @@ app.controller('DisplayCreateController', function() {
 app.controller('SubmitController', function(){
 	this.event = {};
 	this.addEvent = function() {
-		console.log(this.event.endDate)
+		// format Date
+		var month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dez"];
+		var startDate = new Date(this.event.startDate);
+		this.event.startDay = startDate.getDate();
+		this.event.startMonth = month[startDate.getMonth()];
+		this.event.startYear = startDate.getFullYear();
+		this.event.startTime = startDate.getHours() + ':' + startDate.getMinutes();
+
+		var endDate = new Date(this.event.endDate);
+		this.event.endDay = endDate.getDate();
+		this.event.endMonth = month[endDate.getMonth()];
+		this.event.endYear = endDate.getFullYear();
+		this.event.endTime = endDate.getHours() + ':' + endDate.getMinutes();
+
 		events.push(this.event);
 		localStorage.setItem('events', JSON.stringify(events));
 		this.event = {};
