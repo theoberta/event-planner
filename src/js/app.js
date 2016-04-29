@@ -27,13 +27,14 @@ app.controller('LoginController', function() {
 
 app.controller('DisplayEventsController', function() {
 	this.events = events;
+	this.h3Content = h3Content;
 });
 
 app.controller('DisplayCreateController', function() {
 	this.visibility = false;
 	this.setVisible = function() {
 		this.visibility = !this.visibility;
-	}
+	};
 });
 
 app.controller('SubmitController', function(){
@@ -55,15 +56,33 @@ app.controller('SubmitController', function(){
 
 		events.push(this.event);
 		localStorage.setItem('events', JSON.stringify(events));
+
+		if (events.length > 0) {
+		h3Content = "Your Events";
+		}
+		else {
+		h3Content = "Sorry, there are no events."
+		}
+		console.log(h3Content);
+		// empty event object so form will be emptied
 		this.event = {};
+
 	}
 });
 
-
+// initialize events
 var events = [];
 
 if( localStorage.getItem("events") != null ) {
 events = JSON.parse(localStorage.getItem("events"));
 }
+
+var h3Content = "";
+if (events.length > 0) {
+		h3Content = "Your Events";
+	}
+	else {
+		h3Content = "Sorry, there are no events."
+	}
 
 })();

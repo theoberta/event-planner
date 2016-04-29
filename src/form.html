@@ -22,7 +22,7 @@
     <div class="form-container">
         <div class="container">
             <div class="eventlist" ng-controller="DisplayEventsController as display">
-                <h3>Your Events</h3>
+                <h3>{{display.h3Content}}</h3>
                 <ul class="events" ng-repeat="event in display.events track by $index">
                     <li class="event">
                         <div class="date">
