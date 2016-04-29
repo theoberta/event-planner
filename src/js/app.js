@@ -24,6 +24,7 @@ app.controller('LoginController', function() {
 	};
 });
 
+
 app.controller('DisplayEventsController', function() {
 	this.events = events;
 });
@@ -31,7 +32,7 @@ app.controller('DisplayEventsController', function() {
 app.controller('DisplayCreateController', function() {
 	this.visibility = false;
 	this.setVisible = function() {
-		this.visibility = true;
+		this.visibility = !this.visibility;
 	}
 });
 
@@ -40,41 +41,16 @@ app.controller('SubmitController', function(){
 	this.addEvent = function() {
 		console.log(this.event.endDate)
 		events.push(this.event);
+		localStorage.setItem('events', JSON.stringify(events));
 		this.event = {};
 	}
 });
 
-var events = [
-	{
-		name: 'Jane\'s Birthday',
-		type: 'Party',
-		host: 'Jim',
-		startDate: '07 June, 10:00 PM',
-		endDate: '08 June, 4:00 AM',
-		guests: 'Irene, Susan, Peter, John, Bob, Benny, Veronica',
-		location: 'Jim\'s house',
-		message: 'Bring something.'
-	},
-	{
-		name: 'Jane\'s Birthday',
-		type: 'Party',
-		host: 'Jim',
-		startDate: '07 June, 10:00 PM',
-		endDate: '08 June, 4:00 AM',
-		guests: 'Irene, Susan, Peter, John, Bob, Benny, Veronica',
-		location: 'Jim\'s house',
-		message: 'Bring something.'
-	},
-	{
-		name: 'Jane\'s Birthday',
-		type: 'Party',
-		host: 'Jim',
-		startDate: '07 June, 10:00 PM',
-		endDate: '08 June, 4:00 AM',
-		guests: 'Irene, Susan, Peter, John, Bob, Benny, Veronica',
-		location: 'Jim\'s house',
-		message: 'Bring something.'
-	}
-];
+
+var events = [];
+
+if( localStorage.getItem("events") != null ) {
+events = JSON.parse(localStorage.getItem("events"));
+}
 
 })();

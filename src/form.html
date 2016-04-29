@@ -23,7 +23,7 @@
         <div class="container">
             <div class="eventlist" ng-controller="DisplayEventsController as display">
                 <h3>Your Events</h3>
-                <ul class="events" ng-repeat="event in display.events">
+                <ul class="events" ng-repeat="event in display.events track by $index">
                     <li class="event">
                         <div class="date">{{event.startDate}}
                             <time>{{event.startDate}}</time>
@@ -42,7 +42,7 @@
 	            <div ng-show="create.visibility">
 	                <h3>create a new event</h3>
 	                <form autocomplete="on" ng-controller="SubmitController as submit"
-	                ng-submit="submit.addEvent()">
+	                ng-submit="submit.addEvent(); create.setVisible()">
 	                    <label for="name">Name:</label>
 	                    <input type="text" id="name" placeholder="Name of event" ng-model="submit.event.name" required></input>
 
