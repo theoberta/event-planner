@@ -26,14 +26,14 @@
                 <ul class="events" ng-repeat="event in display.events track by $index">
                     <li class="event">
                         <div class="date">
-                            <time><div class="month-day">{{event.startMonth + ' '}} {{event.startDay}}</div>{{event.startYear + " - "}}{{event.startTime}}</time><br>
+                            <time><div class="month-day">{{event.startDate | date:'MMM d'}}</div>{{event.startDate | date:'hh:mm a'}}</time><br>
 
-                            <time><div class="month-day">{{event.endMonth + " "}}{{event.endDay}}</div>{{event.endYear + " - "}}{{event.endTime}}</time>
                         </div><div class="event-info">
                             <h4>{{event.name}}</h4>
                             <p class="event-type">{{event.type}}<span class="host">{{' hosted by ' + event.host}}</span></p>
                             <div class="devider"></div>
                             <p class="location"><span class="label">location: </span>{{event.location}}</p>
+                            <p class="time"><span class="label">date: </span>{{event.startDate | date:'short'}}{{" - "}}{{event.endDate | date:'short'}}</p>
                             <p class="guests"><span class="label">guests: </span>{{event.guests}}</p>
                             <p class="message"><span class="label">{{event.host + ' says: '}}</span>{{event.message}}</p>
                         </div>
@@ -47,7 +47,7 @@
 	                <form autocomplete="on" ng-controller="SubmitController as submit"
 	                ng-submit="submit.addEvent(); create.setVisible()">
 	                    <label for="name">Name:</label>
-	                    <input type="text" id="name" placeholder="Name of event" ng-model="submit.event.name" required></input>
+	                    <input type="text" id="name" placeholder="Name of event" ng-model="submit.event.name" required autofocus></input>
 
 	                    <label for="type">type:</label>
 	                    <input type="text" list="type" placeholder="type of event" ng-model="submit.event.type" required></input>
@@ -81,7 +81,7 @@
 	                </form>
 	            </div>
             </div>
-        </div>
+        </div><!-- end container -->
     </div>
 </body>
 

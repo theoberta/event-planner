@@ -109,10 +109,11 @@ ul {
 
 li {
 	min-height: 80px;
+	display: table;
 }
 
 .date {
-	display: inline-block;
+	display: table-cell;
 	background-color: #FC9704;
 	color: white;
 	padding: 5px 10px;
@@ -123,22 +124,22 @@ li {
 }
 
 .month-day {
-	font-size: 1.5em;
+	font-size: 1.7em;
+}
+
+time{
+	display: block;
+	font-size: 0.9em;
 }
 
 .event-info {
-	display: inline-block;
+	display: table-cell;
 	background-color: white;
 	padding: 5px 10px;
 	width: 80%;
 	height: 100%;
 	box-sizing: border-box;
 	vertical-align: top;
-}
-
-time{
-	display: block;
-	font-size: 0.7em;
 }
 
 h4 {
@@ -169,7 +170,7 @@ margin: 5px 0;
 	color: #FC9704;
 }
 
-.message, .guests, .location {
+.message, .guests, .location, .time {
 	font-size: 0.7em;
 	color: #585858;
 }

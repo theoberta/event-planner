@@ -22,11 +22,11 @@
 			<h3>Create an Account</h3>
 			<form autocomplete="on" ng-controller="LoginController as login">
 				<label for="name">Full Name:</label>
-				<input type="text" id="name" name="name" placeholder="Full Name" required></input>
+				<input type="text" id="name" name="name" placeholder="Full Name" required autofocus></input>
 				<label for="email">Email:</label>
 				<input type="email" id="email" name="email" placeholder="Email" required></input>
 				<label for="password">Please choose a password:</label>
-				<input type="password" id="email" placeholder="Password" ng-model="login.password" ng-keyup="login.verifyChar(); login.verifyLen()" required></input>
+				<input type="password" id="password" placeholder="Password" ng-model="login.password" ng-keyup="login.verifyChar(); login.verifyLen()" required></input>
 				<p class="restrictions-1" ng-class="{correct:login.verifiedLen}" >Use at least 8 characters</p>
 				<p class="restrictions-2" ng-class="{correct:login.verifiedChar}" >Use at least one special character</p>
 				<button type="submit">submit</button>
