@@ -28,12 +28,10 @@ app.controller('LoginController', function() {
 app.controller('DisplayEventsController', function() {
 	this.events = events;
 	this.h3Content = h3Content;
-});
-
-app.controller('DisplayCreateController', function() {
-	this.visibility = false;
-	this.setVisible = function() {
-		this.visibility = !this.visibility;
+	this.btnVisibility = false;
+	this.setBtnVisible = function() {
+		this.btnVisibility = !this.btnVisibility;
+		window.scrollTo(0, 0);
 	};
 });
 

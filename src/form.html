@@ -19,70 +19,78 @@
             <h1>event planner</h1>
         </div>
     </header>
-    <div class="form-container">
-        <div class="container">
-            <div class="eventlist" ng-controller="DisplayEventsController as display">
-                <h3>{{display.h3Content}}</h3>
-                <ul class="events" ng-repeat="event in display.events track by $index">
-                    <li class="event">
-                        <div class="date">
-                            <time><div class="month-day">{{event.startDate | date:'MMM d'}}</div>{{event.startDate | date:'hh:mm a'}}</time><br>
+    <div class="wrapper" ng-controller="DisplayEventsController as display">
+        <div class="form-container">
+            <div class="container">
+                <div class="eventlist">
+                    <h3>{{display.h3Content}}</h3>
+                    <ul class="events">
+                        <li class="event" ng-repeat="event in display.events track by $index">
+                            <div class="date">
+                                <time>
+                                    <div class="month-day">{{event.startDate | date:'MMM d'}}</div>{{event.startDate | date:'hh:mm a'}}</time>
+                                <br>
 
-                        </div><div class="event-info">
-                            <h4>{{event.name}}</h4>
-                            <p class="event-type">{{event.type}}<span class="host">{{' hosted by ' + event.host}}</span></p>
-                            <div class="devider"></div>
-                            <p class="location"><span class="label">location: </span>{{event.location}}</p>
-                            <p class="time"><span class="label">date: </span>{{event.startDate | date:'short'}}{{" - "}}{{event.endDate | date:'short'}}</p>
-                            <p class="guests"><span class="label">guests: </span>{{event.guests}}</p>
-                            <p class="message"><span class="label">{{event.host + ' says: '}}</span>{{event.message}}</p>
-                        </div>
-                    </li>
-                </ul>
+                            </div>
+                            <div class="event-info">
+                                <h4>{{event.name}}</h4>
+                                <p class="event-type">{{event.type}}<span class="host">{{' hosted by ' + event.host}}</span>
+                                </p>
+                                <div class="devider"></div>
+                                <p class="location"><span class="label">location: </span>{{event.location}}</p>
+                                <p class="time"><span class="label">date: </span>{{event.startDate | date:'short'}}{{" - "}}{{event.endDate | date:'short'}}</p>
+                                <p class="guests"><span class="label">guests: </span>{{event.guests}}</p>
+                                <p class="message"><span class="label">{{event.host + ' says: '}}</span>{{event.message}}</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <button ng-click="display.setBtnVisible()">create new event</button>
+                </div>
             </div>
-            <div class="create-event" ng-controller="DisplayCreateController as create">
-	            <button ng-click="create.setVisible()">create new event</button>
-	            <div ng-show="create.visibility">
-	                <h3>create a new event</h3>
-	                <form autocomplete="on" ng-controller="SubmitController as submit"
-	                ng-submit="submit.addEvent(); create.setVisible()">
-	                    <label for="name">Name:</label>
-	                    <input type="text" id="name" placeholder="Name of event" ng-model="submit.event.name" required autofocus></input>
+            <!-- end container -->
+        </div>
+        <div class="create-event-bg" ng-show="display.btnVisibility">
+            <div class="create-event">
+            <button class="closeBtn" ng-click="display.setBtnVisible()">❌</button>
+                <h3>create a new event</h3>
+                <form autocomplete="on" ng-controller="SubmitController as submit" ng-submit="submit.addEvent(); display.setBtnVisible()">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" placeholder="Name of event" ng-model="submit.event.name" required autofocus></input>
 
-	                    <label for="type">type:</label>
-	                    <input type="text" list="type" placeholder="type of event" ng-model="submit.event.type" required></input>
-	                    <datalist id="type">
-	    				<option value="Meeting">
-	    				<option value="Concert">
-	    				<option value="Party">
-	    				<option value="Dinner">
-	    				<option value="Work Out">
-	  					</datalist>
+                    <label for="type">type:</label>
+                    <input type="text" list="type" placeholder="type of event" ng-model="submit.event.type" required></input>
+                    <datalist id="type">
+                        <option value="Meeting">
+                        <option value="Concert">
+                        <option value="Party">
+                        <option value="Dinner">
+                        <option value="Work Out">
+                    </datalist>
 
-	                    <label for="host">host:</label>
-	                    <input type="text" id="host" name="name" placeholder="Host" ng-model="submit.event.host" required></input>
+                    <label for="host">host:</label>
+                    <input type="text" id="host" name="name" placeholder="Host" ng-model="submit.event.host" required></input>
 
-	                    <label for="start-date">start date:</label>
-	                    <input type="datetime-local" id="start-date" placeholder="start date" ng-model="submit.event.startDate" required></input>
+                    <label for="start-date">start date:</label>
+                    <input type="datetime-local" id="start-date" placeholder="start date" ng-model="submit.event.startDate" required></input>
 
-	                    <label for="end-date">end date:</label>
-	                    <input type="datetime-local" id="end-date" placeholder="end date" ng-model="submit.event.endDate" required></input>
+                    <label for="end-date">end date:</label>
+                    <input type="datetime-local" id="end-date" placeholder="end date" ng-model="submit.event.endDate" required></input>
 
-	                    <label for="guests">guests:</label>
-	                    <input type="text" id="guests" name="name" placeholder="guests" ng-model="submit.event.guests" required></input>
+                    <label for="guests">guests:</label>
+                    <input type="text" id="guests" name="name" placeholder="guests" ng-model="submit.event.guests" required></input>
 
-	                    <label for="location">location:</label>
-	                    <input type="text" id="location" placeholder="location" ng-model="submit.event.location" required></input>
+                    <label for="location">location:</label>
+                    <input type="text" id="location" placeholder="location" ng-model="submit.event.location" required></input>
 
-	                    <label for="message">message:</label>
-	                    <textarea type="text" id="message" placeholder="leave a message" ng-model="submit.event.message"></textarea>
+                    <label for="message">message:</label>
+                    <textarea type="text" id="message" placeholder="leave a message" ng-model="submit.event.message"></textarea>
 
-	                    <button type="submit">submit</button>
-	                </form>
-	            </div>
+                    <button type="submit">submit</button>
+                </form>
             </div>
-        </div><!-- end container -->
+        </div>
     </div>
+
 </body>
 
 </html>
