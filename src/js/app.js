@@ -25,9 +25,9 @@ app.controller('LoginController', function() {
 });
 
 
-app.controller('DisplayEventsController', function() {
-	this.events = events;
-	this.h3Content = h3Content;
+app.controller('DisplayEventsController', function($scope) {
+	$scope.events = events;
+	$scope.h3Content = h3Content;
 	this.btnVisibility = false;
 	this.setBtnVisible = function() {
 		this.btnVisibility = !this.btnVisibility;
@@ -35,19 +35,13 @@ app.controller('DisplayEventsController', function() {
 	};
 });
 
-app.controller('SubmitController', function(){
+app.controller('SubmitController', function($scope){
 	this.event = {};
 	this.addEvent = function() {
-		events.push(this.event);
+		$scope.$parent.events.push(this.event);
 		localStorage.setItem('events', JSON.stringify(events));
-
-		if (events.length > 0) {
-		h3Content = "Your Events";
-		}
-		else {
-		h3Content = "Sorry, there are no events."
-		}
-		console.log(h3Content);
+		// update h3Content
+		$scope.$parent.h3Content = "Your Events";
 		// empty event object so form will be emptied
 		this.event = {};
 

@@ -23,9 +23,9 @@
         <div class="form-container">
             <div class="container">
                 <div class="eventlist">
-                    <h3>{{display.h3Content}}</h3>
+                    <h3>{{h3Content}}</h3>
                     <ul class="events">
-                        <li class="event" ng-repeat="event in display.events track by $index">
+                        <li class="event" ng-repeat="event in events">
                             <div class="date">
                                 <time>
                                     <div class="month-day">{{event.startDate | date:'MMM d'}}</div>{{event.startDate | date:'hh:mm a'}}</time>
