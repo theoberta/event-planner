@@ -1,28 +1,45 @@
 (function(){
-var app = angular.module('eventPlanner', []);
+var app = angular.module('eventPlanner', ['ngMessages']);
 
 app.controller('LoginController', function() {
 	this.user = {};
 	this.user.password = '';
 	this.verifiedLen = false;
 	this.verifiedChar = false;
-	this.verifyLen = function() {
-		if (this.user.password !== undefined && this.user.password.length >= 8) {
-			this.verifiedLen = true;
-		}
-		else {
-			this.verifiedLen = false;
-		}
-	};
+});
 
-	this.verifyChar = function() {
-		if (this.user.password !== undefined && this.user.password.match(/[\!\@\#\$\%\^\&\*\?\;\:]/g)) {
-			this.verifiedChar = true;
-		}
-		else {
-			this.verifiedChar = false;
-		}
-	};
+
+var INTEGER_REGEXP = /[\!\@\#\$\%\^\&\*\?\;\:]/;
+app.directive('char', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, elm, attrs, ctrl) {
+      ctrl.$validators.char = function(modelValue, viewValue) {
+        if (INTEGER_REGEXP.test(viewValue)) {
+            return true;
+        }
+        else {
+            return false;
+    	}
+      };
+    }
+  };
+});
+
+app.directive('len', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, elm, attrs, ctrl) {
+      ctrl.$validators.len = function(modelValue, viewValue) {
+        if (viewValue.length > 7) {
+            return true;
+        }
+        else {
+            return false;
+    	}
+      };
+    }
+  };
 });
 
 

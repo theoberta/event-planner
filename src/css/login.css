@@ -56,18 +56,15 @@ input {
 	font-family: 'Open Sans', sans-serif;
 }
 
+.error-message {
+	padding-top: 5px;
+}
+
 form p {
 	color: #585858;
 	font-size: 0.8em;
+	margin: 0;
 
-}
-
-.restrictions-1 {
-	margin: 7px 0 0 0;
-}
-
-.restrictions-2 {
-	margin: 0 0 5px 0;
 }
 
 .correct {
