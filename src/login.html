@@ -20,13 +20,13 @@
 	<div class="form-container">
 		<div class="container">
 			<h3>Create an Account</h3>
-			<form autocomplete="on" ng-controller="LoginController as login">
+			<form name="loginForm" autocomplete="on" ng-controller="LoginController as login" ng-submit="loginForm.$valid" novalidate>
 				<label for="name">Full Name:</label>
-				<input type="text" id="name" name="name" placeholder="Full Name" required autofocus></input>
+				<input class="login-input" type="text" id="name" name="name" ng-model="login.user.name" placeholder="Full Name" autocomplete="name" required autofocus></input>
 				<label for="email">Email:</label>
-				<input type="email" id="email" name="email" placeholder="Email" required></input>
+				<input class="login-input" type="email" id="email" name="email" ng-model="login.user.email" placeholder="Email" autocomplete="email" required></input>
 				<label for="password">Please choose a password:</label>
-				<input type="password" id="password" placeholder="Password" ng-model="login.password" ng-keyup="login.verifyChar(); login.verifyLen()" required></input>
+				<input class="login-input" type="password" id="password" ng-model="login.user.password" placeholder="Password" ng-model="login.password" ng-keyup="login.verifyChar(); login.verifyLen()" required></input>
 				<p class="restrictions-1" ng-class="{correct:login.verifiedLen}" >Use at least 8 characters</p>
 				<p class="restrictions-2" ng-class="{correct:login.verifiedChar}" >Use at least one special character</p>
 				<button type="submit">submit</button>

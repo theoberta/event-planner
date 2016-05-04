@@ -25,7 +25,7 @@
                 <div class="eventlist">
                     <h3>{{h3Content}}</h3>
                     <ul class="events">
-                        <li class="event" ng-repeat="event in events">
+                        <li class="event" ng-repeat="event in events track by $index">
                             <div class="date">
                                 <time>
                                     <div class="month-day">{{event.startDate | date:'MMM d'}}</div>{{event.startDate | date:'hh:mm a'}}</time>
@@ -53,7 +53,7 @@
             <div class="create-event">
             <button class="closeBtn" ng-click="display.setBtnVisible()">❌</button>
                 <h3>create a new event</h3>
-                <form autocomplete="on" ng-controller="SubmitController as submit" ng-submit="submit.addEvent(); display.setBtnVisible()">
+                <form name="eventForm" autocomplete="on" ng-controller="SubmitController as submit" ng-submit="eventForm.$valid && submit.addEvent(); display.setBtnVisible()" novalidate>
                     <label for="name">Name:</label>
                     <input type="text" id="name" placeholder="Name of event" ng-model="submit.event.name" required autofocus></input>
 
@@ -80,7 +80,7 @@
                     <input type="text" id="guests" name="name" placeholder="guests" ng-model="submit.event.guests" required></input>
 
                     <label for="location">location:</label>
-                    <input type="text" id="location" placeholder="location" ng-model="submit.event.location" required></input>
+                    <input type="text" id="location" name="street-address" placeholder="location" ng-model="submit.event.location" required></input>
 
                     <label for="message">message:</label>
                     <textarea type="text" id="message" placeholder="leave a message" ng-model="submit.event.message"></textarea>

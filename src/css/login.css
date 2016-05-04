@@ -74,7 +74,15 @@ form p {
 	color: #03a96e;
 }
 
+.ng-dirty:focus.ng-invalid {
+	outline-color: #e6043d;
+}
 
+.ng-valid:focus.ng-dirty{
+	outline-color: #03a96e;
+}
+
+form {border: none;}
 
 button {
 	border: none;

@@ -2,11 +2,12 @@
 var app = angular.module('eventPlanner', []);
 
 app.controller('LoginController', function() {
-	this.password = '';
+	this.user = {};
+	this.user.password = '';
 	this.verifiedLen = false;
 	this.verifiedChar = false;
 	this.verifyLen = function() {
-		if (this.password !== undefined && this.password.length >= 8) {
+		if (this.user.password !== undefined && this.user.password.length >= 8) {
 			this.verifiedLen = true;
 		}
 		else {
@@ -15,7 +16,7 @@ app.controller('LoginController', function() {
 	};
 
 	this.verifyChar = function() {
-		if (this.password !== undefined && this.password.match(/[\!\@\#\$\%\^\&\*\?\;\:]/g)) {
+		if (this.user.password !== undefined && this.user.password.match(/[\!\@\#\$\%\^\&\*\?\;\:]/g)) {
 			this.verifiedChar = true;
 		}
 		else {
