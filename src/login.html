@@ -21,7 +21,7 @@
 	<div class="form-container">
 		<div class="container">
 			<h3>Create an Account</h3>
-			<form name="loginForm" autocomplete="on" ng-controller="LoginController as login" ng-submit="loginForm.$valid" novalidate>
+			<form name="loginForm" action="form.html" autocomplete="on" ng-controller="LoginController as login" novalidate>
 				<label for="name">Full Name:</label>
 				<input class="login-input" type="text" id="name" name="name" ng-model="login.user.name" placeholder="Full Name" autocomplete="name" required autofocus></input>
 				<label for="email">Email:</label>
@@ -29,10 +29,10 @@
 				<label for="password">Please choose a password:</label>
 				<input class="login-input" name="password" type="password" id="password" ng-model="login.user.password" placeholder="Password" len char required ></input>
 				<div class="error-message" ng-messages="loginForm.password.$error" ng-messages-multiple>
-					<p ng-message="char">please use a special character</p>
-					<p ng-message="len">use at least 8 characters</p>
+					<p ng-message="char">Please use a special character.</p>
+					<p ng-message="len">Use at least 8 characters.</p>
 				</div>
-				<button type="submit">submit</button>
+				<button type="submit" ng-disabled="loginForm.$invalid">submit</button>
 			</form>
 		</div>
 	</div>
