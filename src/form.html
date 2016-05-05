@@ -8,6 +8,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
     <script src="vendors/angular.min.js"></script>
+    <script src="vendors/angular-messages.min.js"></script>
     <script src="js/app.js"></script>
 
     <title>Event-Planner-Form</title>
@@ -71,10 +72,17 @@
                     <input type="text" id="host" name="name" placeholder="Host" ng-model="submit.event.host" required></input>
 
                     <label for="start-date">start date:</label>
-                    <input type="datetime-local" id="start-date" placeholder="start date" ng-model="submit.event.startDate" required></input>
+                    <input type="datetime-local" name="startDate" id="start-date" placeholder="start date" ng-model="submit.event.startDate" ng-change="submit.setDate()" min="{{submit.minStartDate | date:'yyyy-MM-ddTHH:mm'}}" required></input>
+                    <div ng-messages="eventForm.startDate.$error">
+						<p ng-message="min">Don't live in the past. Please choose a date in the future.</p>
+                    </div>
 
                     <label for="end-date">end date:</label>
-                    <input type="datetime-local" id="end-date" placeholder="end date" ng-model="submit.event.endDate" required></input>
+                    <input type="datetime-local" name="endDate" id="end-date" placeholder="end date" ng-model="submit.event.endDate" min="{{submit.minEndDate | date:'yyyy-MM-ddTHH:mm'}}" required></input>
+
+                    <div ng-messages="eventForm.endDate.$error">
+						<p ng-message="min">Over before it even began?</p>
+                    </div>
 
                     <label for="guests">guests:</label>
                     <input type="text" id="guests" name="name" placeholder="guests" ng-model="submit.event.guests" required></input>

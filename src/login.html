@@ -27,7 +27,7 @@
 				<label for="email">Email:</label>
 				<input class="login-input" type="email" id="email" name="email" ng-model="login.user.email" placeholder="Email" autocomplete="email" required></input>
 				<label for="password">Please choose a password:</label>
-				<input class="login-input" name="password" type="password" id="password" ng-model="login.user.password" placeholder="Password" ng-model="login.password" ng-keyup="login.verifyChar(); login.verifyLen()" len char required ></input>
+				<input class="login-input" name="password" type="password" id="password" ng-model="login.user.password" placeholder="Password" len char required ></input>
 				<div class="error-message" ng-messages="loginForm.password.$error" ng-messages-multiple>
 					<p ng-message="char">please use a special character</p>
 					<p ng-message="len">use at least 8 characters</p>

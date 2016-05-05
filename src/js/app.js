@@ -4,8 +4,6 @@ var app = angular.module('eventPlanner', ['ngMessages']);
 app.controller('LoginController', function() {
 	this.user = {};
 	this.user.password = '';
-	this.verifiedLen = false;
-	this.verifiedChar = false;
 });
 
 
@@ -55,6 +53,14 @@ app.controller('DisplayEventsController', function($scope) {
 
 app.controller('SubmitController', function($scope){
 	this.event = {};
+	// initiate min start and end date
+	this.minStartDate = new Date();
+	this.minEndDate = new Date();
+	// change min end date when start date was defined
+	this.setDate =function() {
+		this.minEndDate = this.event.startDate;
+	}
+
 	this.addEvent = function() {
 		$scope.$parent.events.push(this.event);
 		localStorage.setItem('events', JSON.stringify(events));
