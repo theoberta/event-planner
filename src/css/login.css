@@ -7,7 +7,6 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Open Sans', sans-serif;
-	/*font-family: 'Ubuntu', sans-serif;*/
 }
 
 /*/////////////////////////////////////HEADER////////////////////////////////////////////*/
@@ -18,6 +17,7 @@ header {
 
 .container {
 	margin: 0 auto;
+	padding: 0 10px;
 	max-width: 500px;
 }
 
@@ -34,6 +34,10 @@ h1 {
 .form-container{
 	background-color: #C8C9D4;
 	min-height: 100%;
+}
+
+.account-container {
+	max-width: 200px;
 }
 
 h3 {
@@ -103,7 +107,7 @@ button:hover {
 	background-color: rgba(100, 100, 100, 0.85);
 	width: 100%;
 	height: 100%;
-	position: absolute;
+	position: fixed;
 	top: 0;
 }
 
@@ -122,7 +126,7 @@ button:hover {
 	margin: 0;
 	position: absolute;
 	right: 0;
-	padding: 15px 15px 5px 5px;
+	padding: 10px 15px 5px 15px;
 }
 
 .closeBtn:hover {
@@ -229,4 +233,69 @@ margin: 5px 0;
 
 li p {
 	margin: 0;
+}
+
+.eventlist button {
+	margin-bottom: 20px;
+}
+
+/*///////////////////////////////////MEDIA QUERIES///////////////////////////////////////////////////*/
+
+@media (max-width: 490px) {
+	.month-day {
+		font-size: 1.5em;
+	}
+	time {
+		font-size: 0.8em;
+	}
+}
+
+@media (max-width: 420px) {
+	.month-day {
+		font-size: 1.4em;
+	}
+	time {
+		font-size: 0.7em;
+	}
+}
+
+@media (max-width: 380px) {
+	.date {
+		width: 25%;
+	}
+
+	.event-info {
+		width: 75%;
+	}
+
+	h4 {
+		font-size: 0.9em;
+	}
+}
+
+@media (max-width: 310px) {
+	.date, .event-info {
+		display: block;
+		width: 100%;
+	}
+}
+
+@media (max-width: 250px) {
+	h1 {
+		font-size: 2em;
+		padding: 5px 0 10px 0;
+	}
+
+	h3 {
+		font-size: 1em;
+		padding-top: 15px;
+	}
+
+	form p {
+		font-size: 0.7em;
+	}
+
+	.create-event {
+	margin-top: 0;
+}
 }
