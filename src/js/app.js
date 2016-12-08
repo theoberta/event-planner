@@ -45,8 +45,10 @@ app.controller('DisplayEventsController', function($scope) {
 	$scope.events = events;
 	$scope.h3Content = h3Content;
 	this.btnVisibility = false;
+	this.bodyScroll = true;
 	this.setBtnVisible = function() {
 		this.btnVisibility = !this.btnVisibility;
+		this.bodyScroll = !this.bodyScroll;
 		window.scrollTo(0, 0);
 	};
 });
@@ -57,7 +59,7 @@ app.controller('SubmitController', function($scope){
 	this.minStartDate = new Date();
 	this.minEndDate = new Date();
 	// change min end date when start date was defined
-	this.setDate =function() {
+	this.setDate = function() {
 		this.minEndDate = this.event.startDate;
 	}
 

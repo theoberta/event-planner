@@ -10,6 +10,10 @@ body {
 	background-color: #C8C9D4;
 }
 
+.no-scroll {
+	overflow: hidden;
+}
+
 /*/////////////////////////////////////HEADER////////////////////////////////////////////*/
 
 header {
@@ -87,6 +91,7 @@ button {
 	margin-top: 20px;
 	color: white;
 	background-color: #FC9704;
+	cursor: pointer;
 }
 
 button:hover {
@@ -95,16 +100,16 @@ button:hover {
 
 /*///////////////////////////////////////EVENT FORM///////////////////////////////////////////*/
 
-/*.wrapper {
-	height: 100%;
-}*/
-
 .create-event-bg {
 	background-color: rgba(100, 100, 100, 0.85);
 	width: 100%;
 	min-height: 100%;
-	position: absolute;
+	position: fixed;
 	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	overflow: auto;
 }
 
 .create-event {
