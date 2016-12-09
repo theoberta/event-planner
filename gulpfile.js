@@ -7,9 +7,8 @@ var cssnano = require('gulp-cssnano');
 var htmlmin = require('gulp-htmlmin');
 var beautify = require('gulp-beautify');
 var cssbeautify = require('gulp-cssbeautify');
-var imagemin = require('gulp-imagemin');
 
- 
+
 gulp.task('beautify', function() {
   gulp.src('src/*')
     .pipe(gulpIf('*.js', beautify({indentSize: 4})))
@@ -23,17 +22,10 @@ gulp.task('clean', function () {
 });
 
 gulp.task('minify', function() {
-	return gulp.src('src/*')
-	.pipe(gulpIf('*.js', uglify().on('error', gutil.log)))
+	return gulp.src(['src/*','src/**/*'])
 	.pipe(gulpIf('*.css', cssnano()))
 	.pipe(gulpIf('*.html', htmlmin({collapseWhitespace: true})))
 	.pipe(gulp.dest('dist'));
-});
-
-gulp.task('image', function() {
-	return gulp.src('src/images/*')
-	.pipe(imagemin())
-	.pipe(gulp.dest('dist/images'))
 });
 
 gulp.task('vendors', function() {
@@ -41,4 +33,10 @@ gulp.task('vendors', function() {
 	.pipe(gulp.dest('dist/vendors'))
 });
 
-gulp.task('dist', ['minify','image','vendors']);
+gulp.task('minifyJS', function() {
+	return gulp.src('src/js/*.js')
+	.pipe(uglify().on('error', gutil.log))
+	.pipe(gulp.dest('dist/js'))
+});
+
+gulp.task('dist', ['minify','minifyJS','vendors']);
