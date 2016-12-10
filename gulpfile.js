@@ -17,7 +17,7 @@ gulp.task('beautify', function() {
 });
 
 gulp.task('clean', function () {
-	return gulp.src('dist', {read: false})
+	return gulp.src('docs', {read: false})
 		.pipe(clean());
 });
 
@@ -25,18 +25,18 @@ gulp.task('minify', function() {
 	return gulp.src(['src/*','src/**/*'])
 	.pipe(gulpIf('*.css', cssnano()))
 	.pipe(gulpIf('*.html', htmlmin({collapseWhitespace: true})))
-	.pipe(gulp.dest('dist'));
+	.pipe(gulp.dest('docs'));
 });
 
 gulp.task('vendors', function() {
 	return gulp.src('src/vendors/*')
-	.pipe(gulp.dest('dist/vendors'))
+	.pipe(gulp.dest('docs/vendors'))
 });
 
 gulp.task('minifyJS', function() {
 	return gulp.src('src/js/*.js')
 	.pipe(uglify().on('error', gutil.log))
-	.pipe(gulp.dest('dist/js'))
+	.pipe(gulp.dest('docs/js'))
 });
 
-gulp.task('dist', ['minify','minifyJS','vendors']);
+gulp.task('docs', ['minify','minifyJS','vendors']);
